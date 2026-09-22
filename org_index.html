@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amola Yuva Shakti Mandal Samiti</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f14;
+  --panel:#0f1720;
+  --glass: rgba(255,255,255,0.04);
+  --accent: #00f0ff;
+  --accent-2: #00b1ff;
+  --muted: #9aa7b2;
+  --glass-border: rgba(255,255,255,0.06);
+  --glow: 0 10px 30px rgba(0,240,255,0.06), 0 2px 8px rgba(0,0,0,0.6);
+  --card-elev: 0 10px 30px rgba(2,6,23,0.6);
+  --glass-blur: 8px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(0,176,255,0.03), transparent 8%),
+             radial-gradient(1000px 400px at 90% 90%, rgba(0,176,255,0.02), transparent 6%), var(--bg);
+  color:#e6f2f7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  user-select: none;
+  animation:fadePage .9s ease;
+}
+@keyframes fadePage{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* HEADER */
+header {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25)),
+              url('header-bg1.png') center/cover no-repeat;
+  color: #eafcff;
+  min-height: 200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 28px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  box-shadow: inset 0 -60px 120px rgba(0,0,0,0.35);
+  overflow:hidden;
+}
+header::before{
+  content: "";
+  position: absolute;
+  inset: -10% -10% auto auto;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 20% 20%, rgba(0,240,255,0.06), transparent 25%);
+  filter: blur(40px);
+  transform: rotate(22deg);
+  pointer-events:none;
+}
+.header-center {
+  position: relative;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  z-index:2;
+  padding:14px 20px;
+  border-radius:24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: var(--card-elev);
+  border:1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(var(--glass-blur));
+  flex-wrap: wrap;
+}
+.header-center img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.6), 0 0 18px rgba(0,176,255,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.header-text { display:flex; flex-direction:column; align-items:flex-start; gap:4px; }
+.header-center h1 {
+  font-size: 1.45rem; font-weight:700; margin:0; letter-spacing:0.6px; color:#e9ffff;
+  text-shadow: 0 6px 26px rgba(0,176,255,0.03);
+}
+.header-center p{ font-size:0.88rem; margin:0; font-weight:300; color:var(--muted); }
+.header-center h1::after{
+  content:"";
+  display:block;
+  height:3px;
+  width:60%;
+  margin-top:8px;
+  border-radius:6px;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.25), transparent);
+  opacity:0.9;
+}
+
+/* NAVBAR - horizontal scroll on mobile */
+nav.navbar {
+  margin:18px auto 0;
+  max-width:1200px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:10px 14px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.06));
+  border:1px solid var(--glass-border);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+nav.navbar::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+nav.navbar a {
+  color: var(--muted);
+  text-decoration: none;
+  padding:8px 12px;
+  font-weight:600;
+  border-radius:10px;
+  transition: all .22s cubic-bezier(.2,.9,.3,1);
+  position:relative;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+nav.navbar a:hover {
+  color: #eaffff;
+  transform: translateY(-3px);
+}
+nav.navbar a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%) scaleX(0);
+  bottom:3px;
+  width:60%;
+  height:3px;
+  border-radius:4px;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition: transform .28s;
+}
+nav.navbar a:hover::after{ transform:translateX(-50%) scaleX(1); }
+
+
+/* Highlight Style for All Tabs (same as News tab) */
+nav.navbar a.highlight-tab {
+  background: linear-gradient(90deg, #ff0066, #ffcc00, #00ffcc, #0066ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  animation: gradientShift 3s ease infinite, neonPulse 1.5s infinite alternate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.navbar a.highlight-tab:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff;
+  cursor: pointer;
+}
+/* Animations for blinking / neon effect */
+@keyframes gradientShift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+@keyframes neonPulse {
+  0% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+  50% { text-shadow:0 0 15px #fff, 0 0 25px #ff0, 0 0 35px #0ff; }
+  100% { text-shadow:0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+}
+
+  
+
+/* CAROUSEL */
+.carousel-wrap { margin-top:18px; position:relative; width:100%; height:420px; overflow:hidden;
+  border-radius:18px; max-width:1200px; margin-left:auto; margin-right:auto;
+  box-shadow: var(--card-elev); border:1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.06));
+}
+.carousel { width:100%; height:100%; position:relative; display:flex; align-items:center; justify-content:center; }
+.slides { display:flex; width:100%; height:100%; transition: transform .7s cubic-bezier(.22,.9,.3,1); }
+.slide{ min-width:100%; height:100%; position:relative; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; color:#fff; }
+.slide::after{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(3,8,15,0.12), rgba(0,0,0,0.6)); pointer-events:none; }
+.slide-content{ position:relative; z-index:2; max-width:900px; padding:24px; text-align:center; backdrop-filter: blur(4px); }
+.slide-content h2 { font-size:2rem; margin:0 0 10px 0; letter-spacing:0.6px; color:#eaffff; text-shadow: 0 10px 30px rgba(0,176,255,0.06); display:inline-block; }
+.slide-content p{ font-size:1.05rem; margin:0 0 16px 0; color:var(--muted); max-height:80px; overflow:hidden; text-overflow:ellipsis; }
+.slide-content .cta{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  padding:12px 24px;
+  border-radius:999px;
+  color:#00121a;
+  font-weight:700;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow: 0 12px 40px rgba(0,176,255,0.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.slide-content .cta:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(0,176,255,0.18); }
+
+/* CARDS */
+.cards{ display:flex; flex-wrap: nowrap; justify-content:center; gap:16px; margin:32px 12px; overflow-x:auto; scrollbar-width:none; }
+.cards::-webkit-scrollbar{ display:none; }
+.cards .card{ background: var(--panel); padding:16px; border-radius:var(--radius-md); width:260px; box-shadow:var(--card-elev); text-align:center; flex:0 0 auto; }
+
+/* FOOTER */
+footer{ margin-top:32px; padding:24px; text-align:center; font-size:0.9rem; color:var(--muted); }
+
+/* TOP BUTTON */
+#topBtn{ position:fixed; bottom:24px; right:24px; background:var(--accent); color:#00121a; padding:10px 12px; border-radius:50%; cursor:pointer; display:none; z-index:999; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-center{ flex-direction: row; text-align:left; flex-wrap:wrap; justify-content:center; }
+  .cards{ flex-wrap:nowrap; justify-content:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-center" role="banner" aria-label="Site header">
+    <img src="placeholder1.png" alt="Amola logo">
+    <div class="header-text">
+      <h1>Amola Yuva Shakti Mandal Samiti</h1>
+      <p>Empowering Our Village Through Unity, Education & Progress</p>
+    </div>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="activities.html">Initiatives</a>
+  <a href="live.html">Live</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html">Support Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="member.html">Login</a>
+  <a href="news.html" class="highlight-tab">News</a>
+
+</nav>
+
+<!-- CAROUSEL -->
+<div class="carousel-wrap" aria-roledescription="carousel" aria-label="Highlights">
+  <div class="carousel" id="carousel">
+    <div class="slides" id="slidesContainer"></div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<section class="cards" aria-label="Key info cards">
+  <div class="card">
+    <h3>Our Vision</h3>
+    <p>हमारा उद्देश्य है कि गांव के युवा शिक्षा, सेवा और एकता के माध्यम से सामाजिक और आर्थिक प्रगति में नेतृत्व करें।</p>
+  </div>
+  <div class="card">
+    <h3>Our Mission</h3>
+    <p>हमारे मिशन का लक्ष्य है गांव में हर व्यक्ति को अवसर और संसाधन उपलब्ध कराना, ताकि वे अपने जीवन और समाज को बेहतर बना सकें।</p>
+  </div>
+  <div class="card">
+    <h3>Our Values</h3>
+    <p>हमारे मूल्य हैं ईमानदारी, सहयोग और प्रेरणा — हम प्रत्येक कदम पर समाज की भलाई और युवाओं के सशक्तिकरण को प्राथमिकता देते हैं।</p>
+  </div>
+</section>
+
+<footer>
+  <div>© 2025 Amola Yuva Shakti Mandal Samiti | All Rights Reserved<br><b>Designed & Managed by YSSAMOLA</b></div>
+  <div id="visitorCounter" style="margin-top:8px">👥 Visitors: <span id="visitorNumber">0</span></div>
+</footer>
+
+<div id="topBtn" title="Back to top">⬆</div>
+
+<script>
+/* === SLIDES === */
+const slides = [
+  { title: "स्वछता अभियान", text: "हमारा गांव, हमारा गर्व — सामुदायिक सफाई अभियान में जुड़ें", ctaText: "Join Clean Drive", ctaLink:"join.html", backgroundImage: "slide1.png" },
+  { title: "जन-जन तक पानी की व्यवस्था", text: "ग्रामीणों के लिए स्वच्छ पानी सुनिश्चित करने की योजना। आइए सहयोग करें और अभी रजिस्टर करें!", ctaText: "Register", ctaLink:"join.html", backgroundImage: "slide2.png" },
+  { title: "वार्षिक खेल उत्सव", text: "खेलकूद से स्वस्थ जीवन — भागीदारी के लिए संपर्क करें", ctaText: "Participate", ctaLink:"activities.html", backgroundImage: "slide3.png" },
+ 
+  { title: "सामाजिक व सांस्कृतिक विकास", text: "समाज के सामाजिक और सांस्कृतिक विकास को बढ़ावा देना।!", ctaText: "Register", ctaLink:"join.html", backgroundImage: "slide5.png" },
+  { title: "शिक्षा, स्वास्थ्य व स्वच्छता", text: "सबके लिए गुणवत्तापूर्ण शिक्षा, बेहतर स्वास्थ्य और बेहतर स्वच्छता।", ctaText: "Participate", ctaLink:"activities.html", backgroundImage: "slide6.png" },
+  { title: "गांव का समग्र विकास", text: "हमारा गाँव, हमारी जिम्मेदारी — मिलकर समग्र विकास की ओर कदम बढ़ाएँ।", ctaText: "Participate", ctaLink:"join.html", backgroundImage: "slide7.png" },
+  { title: "पर्यावरण व संरक्षण", text: "स्वच्छ पर्यावरण, स्वस्थ जीवन — संरक्षण के प्रयासों में शामिल हों।", ctaText: "Register", ctaLink:"join.html", backgroundImage: "slide8.png" },
+  { title: "युवा व महिला सशक्तिकरण", text: "युवा और महिलाएँ — समाज की नई ताकत। सशक्तिकरण के लिए जुड़ें।", ctaText: "Participate", ctaLink:"activities.html", backgroundImage: "slide9.png" },
+  { title: "सांस्कृतिक उत्सव", text: "हमारी संस्कृति, हमारी पहचान — सांस्कृतिक कार्यक्रमों में भाग लें।", ctaText: "Participate", ctaLink:"activities.html", backgroundImage: "slide10.png" }
+
+
+];
+const slidesContainer = document.getElementById('slidesContainer');
+slides.forEach((s)=>{
+  const slide = document.createElement('div');
+  slide.className='slide';
+  slide.style.backgroundImage = `url('${s.backgroundImage}')`;
+  const content = document.createElement('div'); content.className='slide-content';
+  content.innerHTML = `<h2>${s.title}</h2><p>${s.text}</p><a class="cta" href="${s.ctaLink}">${s.ctaText}</a>`;
+  slide.appendChild(content); slidesContainer.appendChild(slide);
+});
+
+/* SIMPLE CAROUSEL LOGIC */
+let current=0; const total=slides.length;
+const updateUI=()=>{ slidesContainer.style.transform=`translateX(-${current*100}%)`; };
+const goToSlide=(i)=>{ current=(i+total)%total; updateUI(); };
+setInterval(()=>goToSlide(current+1),5000);
+
+/* TOP BUTTON */
+const topBtn=document.getElementById('topBtn');
+window.onscroll=()=>topBtn.style.display=(window.pageYOffset>300)?'flex':'none';
+topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* VISITOR COUNTER */
+document.getElementById('visitorNumber').textContent=Math.floor(Math.random()*500+100);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
